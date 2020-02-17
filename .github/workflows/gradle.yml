@@ -17,3 +17,7 @@ jobs:
       run: chmod +x ./Secur-o-Cord/gradlew
     - name: Build with Gradle
       run: ./Secur-o-Cord/gradlew build
+    - name: Zip Release
+      uses: TheDoctor0/zip-release@v0.2.1
+      with:
+        path: ./Secur-o-Cord/build/libs/
