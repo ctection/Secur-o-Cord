@@ -21,9 +21,11 @@ jobs:
       uses: TheDoctor0/zip-release@v0.2.1
     - name: git Actions
       uses: srt32/git-actions@v0.0.3
+    - name: list directory
+      run: ls
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: GradleBuild
         # Directory containing files to upload
-        path: ./Secur-o-Cord/build/libs/
+        path: ./build/libs/
