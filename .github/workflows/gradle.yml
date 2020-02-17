@@ -19,3 +19,11 @@ jobs:
       run: ./Secur-o-Cord/gradlew build
     - name: Zip Release
       uses: TheDoctor0/zip-release@v0.2.1
+    - name: git Actions
+      uses: srt32/git-actions@v0.0.3
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: GradleBuild
+        # Directory containing files to upload
+        path: ./Secur-o-Cord/build/libs/
