@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -37,6 +39,12 @@ public class GetChannels {
 		httpCon.setRequestProperty("Authorization", api_key);
 		
 		httpCon.connect();
+		OutputStream os = httpCon.getOutputStream();
+        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");   
+        
+        osw.write("Just Some Text");
+        
+        
 		InputStream is = null;
 		if(httpCon.getResponseCode() >=400) {
 			is = httpCon.getErrorStream();
