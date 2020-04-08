@@ -34,3 +34,19 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
+
+jar {
+  manifest {
+    attributes(
+      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'CRadio.Gradle.Main'
+    )
+  }
+  from {
+   configurations
+      .compile
+      .findAll { !it.name.endsWith('pom') }
+      .collect { it.isDirectory() ? it : zipTree(it) }
+	} 
+  
+}
