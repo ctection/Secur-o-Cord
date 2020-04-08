@@ -28,6 +28,7 @@ public class AuditLogs {
 	public ResponseEntity<String> getAuditLogs(@PathVariable("id") String id, @RequestParam(value = "user_id", defaultValue = "null") String user_id, @RequestParam(value = "action_type", defaultValue = "null") String action_type, @RequestParam(value = "before", defaultValue = "null") String before, @RequestParam(value = "limit", defaultValue = "50") int limit, HttpServletRequest request) throws IOException {
 		
 		// /guilds/{id}/audit-logs
+		// Requires Authorization
 		// PARAMETERS:
 		// String: user_id
 		// int: action_type
