@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,27 +21,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetChannels {
+public class GetChannelMessages {
 	
-	@RequestMapping(value = "/api/channels/{id}", method = RequestMethod.GET)
-	public ResponseEntity<String> getChannels(@PathVariable("id") String id, HttpServletRequest request) throws IOException {
+	@RequestMapping(value = "/api/channels/{id}/messages", method = RequestMethod.GET)
+	public ResponseEntity<String> getChannelMessages(@PathVariable("id") String id, HttpServletRequest request, @RequestParam(value = "around", defaultValue = "null") String around, @RequestParam(value = "before", defaultValue = "null") String before, @RequestParam(value = "after", defaultValue = "null") String after, @RequestParam(value = "limit", defaultValue = "50") int limit) throws IOException {
 		
-		// /channels/{id}
+		// /channels/{id}/messages
 		// Requires Authorization
-		// Returns Channel object from Channel ID
+		// Returns an array of Message objects
 		
 		String api_key = request.getHeader("Authorization");
 		
-		String urlString = "https://discordapp.com/api/channels/"+id;
+		String argument_builder = "";
+		
+		if(!around.equals("null")) {
+			argument_builder = argument_builder + "around="+around+"&";
+		}
+		if(!before.equals("null")) {
+			argument_builder = argument_builder + "before="+before+"&";
+		}
+		if(!after.equals("null")) {
+			argument_builder = argument_builder + "after="+after+"&";
+		}
+		
+		argument_builder = argument_builder + "limit="+limit;
+		
+		String urlString = "https://discordapp.com/api/channels/"+id+"/messages?"+argument_builder;
 		URL url = new URL(urlString);
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setRequestProperty("Authorization", api_key);
 		
 		httpCon.connect();
-		OutputStream os = httpCon.getOutputStream();
-        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");   
-        
-        osw.write("Just Some Text");
         
         
 		InputStream is = null;
