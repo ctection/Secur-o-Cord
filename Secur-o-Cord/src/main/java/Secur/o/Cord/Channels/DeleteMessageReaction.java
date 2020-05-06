@@ -36,7 +36,7 @@ public class DeleteMessageReaction {
 		
 		System.out.println(emoji);
 		
-		String urlString = "https://discordapp.com/api/channels/"+id+"/messages/"+message_id+"/reactions/"+URLEncoder.encode(emoji).replace("+", "%20")+"/"+target; //WORKING AROUND SPACE ENCODING BUG
+		String urlString = "https://discord.com/api/channels/"+id+"/messages/"+message_id+"/reactions/"+URLEncoder.encode(emoji).replace("+", "%20")+"/"+target; //WORKING AROUND SPACE ENCODING BUG
 		URL url = new URL(urlString);
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setRequestProperty("Authorization", api_key);
