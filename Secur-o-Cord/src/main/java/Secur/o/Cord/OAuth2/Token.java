@@ -35,7 +35,7 @@ public class Token {
                                        @RequestParam("redirectURI") URI redirectURI)
                                        throws IOException {
 
-        String urlString = "https://discordapp.com/api/oauth2/token";
+        String urlString = "https://discord.com/api/oauth2/token";
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");

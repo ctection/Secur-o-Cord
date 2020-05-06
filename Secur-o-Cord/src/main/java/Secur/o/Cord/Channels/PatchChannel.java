@@ -57,7 +57,7 @@ public class PatchChannel {
 		
 		String api_key = request.getHeader("Authorization");
 		
-        HttpPatch client = new HttpPatch("https://discordapp.com/api/channels/"+id);
+        HttpPatch client = new HttpPatch("https://discord.com/api/channels/"+id);
         
         StringEntity requestEntity = new StringEntity(
         	    postPayload,
