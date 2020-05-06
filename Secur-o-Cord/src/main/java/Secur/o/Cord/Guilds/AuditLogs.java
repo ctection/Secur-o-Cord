@@ -48,7 +48,7 @@ public class AuditLogs {
 			arg_builder = arg_builder + "before="+URLEncoder.encode(before)+"&";
 		}
 		arg_builder = arg_builder + "limit="+limit;
-		String urlString = "https://discordapp.com/api/guilds/554675435309629451/audit-logs?"+arg_builder;
+		String urlString = "https://discord.com/api/guilds/554675435309629451/audit-logs?"+arg_builder;
 		URL url = new URL(urlString);
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setRequestProperty("Authorization", api_key);
