@@ -49,11 +49,11 @@ public class Authorize {
         String redirectURIString = URLEncoder.encode(redirectURI.toString(), "UTF-8");
         String urlString = "";
         if (state != null)
-        urlString = "https://discordapp.com/oauth2/authorize?response_type=" + responseType +
+        urlString = "https://discord.com/oauth2/authorize?response_type=" + responseType +
                 "&client_id=" + clientId + "&state=" + state + "&scope=" + String.join("%20", scopeNames)
                 + "&redirect_uri=" + redirectURIString;
         else
-            urlString = "https://discordapp.com/oauth2/authorize?response_type=" + responseType +
+            urlString = "https://discord.com/oauth2/authorize?response_type=" + responseType +
                     "&client_id=" + clientId + "&scope=" + String.join("%20", scopeNames)
                     + "&redirect_uri=" + redirectURIString;
 
