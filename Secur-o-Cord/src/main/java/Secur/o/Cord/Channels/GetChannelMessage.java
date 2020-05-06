@@ -30,7 +30,7 @@ public class GetChannelMessage {
 		
 		String api_key = request.getHeader("Authorization");
 		
-		String urlString = "https://discordapp.com/api/channels/"+id+"/messages/"+message_id;
+		String urlString = "https://discord.com/api/channels/"+id+"/messages/"+message_id;
 		URL url = new URL(urlString);
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 		httpCon.setRequestProperty("Authorization", api_key);
